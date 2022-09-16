@@ -6,17 +6,39 @@
     </head>
     <body>
         <style>
-            body{background: #C0C0C0 ;}
-            marquee{ background: hsl(51, 82%, 52%); font-size: 20px; padding-top: 6px; margin: -23px; cursor:pointer;color: red;}
-            .heading{color:rgb(62, 119, 67); position: absolute; top:1%; width: 100%; text-align: center; font-size: 170px; text-shadow: 40px 40px 60px #000000;}
+            body {background: #C0C0C0 ;}
+            marquee { background: hsl(51, 82%, 52%); font-size: 20px; padding-top: 6px; margin: -23px; cursor:pointer;color: red;}
+            .heading {color:rgb(62, 119, 67); position: absolute; top:1%; width: 100%; text-align: center; font-size: 170px; text-shadow: 40px 40px 60px #000000;}
+            form {position: static; font-size: 30px; top: 10px; width: 100%; text-align:left;}
+            amount {font-size: 20px;}
         </style>
 
 
 
         <img src="{{ url_for('static',filename='dolars-background.jpg')}}" alt="flag" height="870" width="1880">
-        <marquee> Witam na mojej stronie kantoru walutowego online</marquee>
+        <marquee> Witam na stronie kalkulatora walutowego online</marquee>
 
-        <h1 class="heading"><strong>Kantor walutowy</strong> </h1>
+        <h1 class="heading"><strong>Kalkulator walutowy</strong> </h1>
+        
+        <form method="POST">
+            <label for="codes">WALUTA</label>
+            <select name="codes" id="codes">
+            <ul>
+                {% for code in codes %}
+                <option name="codes" id="codes"><li>{{code}}</li></option>
+                {% endfor %}
+            </ul>
+            </select>
+            <label for="amount">ILOŚĆ</label>
+            <input type="number" name="amount" min="1" step=".01">
+            <button type="submit">Przelicz</button>
+            <br><br><label for="kwota">Kwota jaką trzeba zapłacić w PLN</label>
+            <input type="text" id="name" name="name"><br>
+            
+            
+            
+
+        </form>
         
     </body>
     
