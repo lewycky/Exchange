@@ -9,7 +9,7 @@
             body {background: #C0C0C0 ; background-image: url(/static/dollars1.jpeg); }
             marquee { background: hsl(51, 82%, 52%); font-size: 20px; padding-top: 6px; margin: -23px; cursor:pointer;color: red;}
             .heading {color:rgb(62, 119, 67); position: absolute; top:1%; width: 100%; text-align: center; font-size: 170px; text-shadow: 40px 40px 60px #000000;}
-           .detail { color: rgb(5, 38, 103); text-align: center; position: absolute; margin-top: 14%; font-size: 60px;  width: 100%; height: 400px; z-index: 1000;}
+           .detail { color: rgb(230, 11, 44); text-align: center; position: absolute; margin-top: 14%; font-size: 60px;  width: 100%; height: 400px; z-index: 1000;}
            .select{ font-size: 38px;}
            .amount{ font-size: 38px;}
            .button{font-size: 38px;}
@@ -25,12 +25,15 @@
         <h1 class="heading"><strong>Kalkulator walutowy</strong> </h1>
         
         <form  class="detail" action="/home" method="POST" >
-            <label  for="code"><strong>WALUTA</strong></label>
+            <label  for="codes"><strong>WALUTA</strong></label>
             <select class="select" name="codes" >
             <ul>
                 {% for code in codes %}
-                <option value="{{ code }}">{{code}}</li></option>
-                {% endfor %}
+                <option value="{{ code }}" {% if selected == code %} selected="selected"{% endif %}>{{code}}</li></option>
+                {% endfor %} 
+                
+
+                
             </ul>
             </select>
             
@@ -40,6 +43,7 @@
             <label for="result"><strong>KWOTA W PLN</strong> </label> <input class="result" type="text" name="result" id="result" value="{{result}}">
             
         </form>
+        
         
            
         

@@ -48,12 +48,14 @@ codes = ["USD", "AUD", "CAD", "EUR", "HUF", "CHF", "GBP", "JPY", "CZK", "DKK", "
 @app.route("/home", methods=["GET", "POST"])
 def home():
     score = None
+    selected = None
     if request.method == "POST":
         amount = request.form['amount']
+        selected = request.form['codes']
         for rate in rates:
             if rate['code'] == request.form['codes']:
                   score = round((float((rate['ask'])) * float(amount)), 2)
-    return render_template("index.html", codes=codes, data=data, result=score )
+    return render_template("index.html", codes=codes, data=data, result=score, selected=selected)
 
 
 if __name__ == "__main__":
